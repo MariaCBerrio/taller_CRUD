@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("api/v1/curso")
 public class CursoControlador {
 
-    private CursoServicio cursoServicio;
+    private final CursoServicio cursoServicio;
 
     @Autowired
     public CursoControlador(CursoServicio cursoServicio){
@@ -25,7 +25,7 @@ public class CursoControlador {
         return ResponseEntity.ok("Se creó el curso correctamente");
     }
 
-    @GetMapping("/{id_curso]")
+    @GetMapping("/{id_curso}")
     public Curso obtenerCursoPorId(@PathVariable("id_curso") Long id){
         return this.cursoServicio.obtenerCursoPorId(id);
     }
@@ -40,7 +40,7 @@ public class CursoControlador {
         return cursoServicio.actualizarCurso(id, curso);
     }
 
-    @DeleteMapping("/{id]")
+    @DeleteMapping("/{id}")
     public void eliminarCurso(@PathVariable Long id){
         cursoServicio.eliminarCurso(id);
     }
